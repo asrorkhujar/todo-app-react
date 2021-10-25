@@ -17,7 +17,6 @@ const AddTodo = ({todos, setTodos}) => {
       ]);
       inputRef.current.value = ""
     }
-    //Name, Desription, Tags (<- 1ta input) (umumiy 3ta input)
   };
   return (
     <form onSubmit={handleFormSubmit} className="add-todo" action="#">
