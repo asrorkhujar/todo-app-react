@@ -4,8 +4,17 @@
   font-size: 18px;
   margin-bottom: 20px;
   border-bottom: 2px solid #ccc;
-  padding: 10px 0;
+  padding: 10px 10px;
+  border-radius: 1px;
+  margin: 0;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.75);
+    cursor: pointer;
+  }
 }
+
 
 .todo__checkbox {
   width: 20px;
@@ -21,6 +30,7 @@
 .todo--done .todo__name {
   text-decoration: line-through;
   color: #999;
+  transition: color 0.4s ease;
 }
 
 .todo__edit {
