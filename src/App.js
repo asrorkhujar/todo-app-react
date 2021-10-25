@@ -6,13 +6,16 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   return (
-    <main className="main container">
-     <h1 className="main__title my-5 text-center font-weight-bold text-info">To-Do App</h1>
-     <AddTodo todos={todos} setTodos={setTodos} />
+    <main className="main">
+      <div className="container-md">
+        <h1 className="main__title my-5 text-center font-weight-bold text-info">To-Do App</h1>
+        <AddTodo todos={todos} setTodos={setTodos} />
 
-      <TodosList todos={todos} setTodos={setTodos} />
-   </main>
-  );
-}
+        <TodosList todos={todos} setTodos={setTodos} />
+      </div>
 
-export default App;
+    </main>
+    );
+  }
+
+  export default App;
