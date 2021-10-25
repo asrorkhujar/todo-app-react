@@ -10,7 +10,7 @@ const AddTodo = ({todos, setTodos}) => {
       setTodos([
         ...todos,
         {
-          id:Math.random(),
+          id: todos.length,
           name: inputRef.current.value,
           completed: false
         }
