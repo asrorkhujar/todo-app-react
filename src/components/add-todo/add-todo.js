@@ -1,27 +1,49 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { URL } from "../../consts";
 import "./add-todo.scss";
 
-const AddTodo = ({todos, setTodos}) => {
+const AddTodo = ({setTodos}) => {
+  const [loading, setLoading] = useState(false);
   const inputRef = useRef();
+
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
 
-    if (inputRef.current.value.trim()) {
-      setTodos([
-        ...todos,
-        {
-          id: todos.length,
-          name: inputRef.current.value,
+    const inputValue = inputRef.current.value;
+    if (inputValue.trim()) {
+      setLoading(true);
+      fetch(URL + "/todos", {
+        method: "POST",
+        body: JSON.stringify({
+          title: inputValue,
+          userId: 1,
           completed: false
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
         }
-      ]);
-      inputRef.current.value = ""
+      })
+        .then(res => {
+          setLoading(false);
+          return res.json();
+        })
+        .then(data => {
+          setTodos((todos) => [
+            data,
+            ...todos
+          ])
+          inputRef.current.value = "";
+        });
     }
+    // Name, Description, Tags (<- 1ta input) (umumiy 3ta input)
   };
+
   return (
     <form onSubmit={handleFormSubmit} className="add-todo" action="#">
       <input ref={inputRef} placeholder="Todo name" className="add-todo__input" type="text" />
-      <button className="add-todo__submit" type="submit">Add todo</button>
+      <button disabled={loading} className="add-todo__submit" type="submit" >
+        {loading ? "Adding..." : "Add todo"}
+      </button>
     </form>
   );
 };
