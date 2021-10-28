@@ -29,7 +29,7 @@ function App() {
 
   return (
     <main className="main container">
-      <h1 className="main__title text-center fw-bold text-warning mt-5">Todo App</h1>
+      <h1 className="main__title text-center fw-bold text-info mt-5">To-Do App</h1>
 
       {/* <button onClick={() => setNumber(number + 1)}>{number}</button> */}
 
